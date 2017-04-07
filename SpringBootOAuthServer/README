@@ -1,0 +1,25 @@
+http://localhost:8080/oauth/authorize?response_type=code&client_id=my-trusted-client&redirect_uri=http://example.com
+
+#Code -> AccesToken y Refresh Token
+curl -v -X POST http://localhost:8080/oauth/token --data "grant_type=authorization_code&client_id=my-trusted-client&redirect_uri=http://example.com&code=Z3GR2O" --user my-trusted-client:secret -H "Accept:application/json"
+
+#RefreshToken -> AccesToken y Refresh Token
+curl -v -X POST http://localhost:8080/oauth/token --data "grant_type=refresh_token&refresh_token=ccd529bf-31d8-424b-8f3d-fce5f9d1d315" --user my-trusted-client:secret -H "Accept:application/json"
+
+#Consume api
+curl -X GET http://localhost:8080/admin/?access_token=25acd05f-4e02-4b27-8407-be8921a823b1
+
+curl -X GET http://localhost:8080/admin/oauth -H "Authorization:Bearer db02c283-6cae-45a3-8460-15d1700e7c6f"
+
+curl -X GET http://localhost:8080/private?access_token=5f4e9f6b-4d93-4b7c-a196-6f2ea7ca6464
+ 
+----------
+
+https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.5-Release-Notes
+
+** OAuth 2 Resource Filter **
+
+The default order of the OAuth2 resource filter 
+has changed from 3 to SecurityProperties.ACCESS_OVERRIDE_ORDER - 1. 
+This places it after the actuator endpoints but before the basic authentication filter chain. 
+The default can be restored by setting security.oauth2.resource.filter-order = 3
