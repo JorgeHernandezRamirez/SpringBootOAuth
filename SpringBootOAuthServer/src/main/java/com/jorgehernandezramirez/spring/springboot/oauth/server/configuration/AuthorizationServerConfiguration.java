@@ -1,4 +1,4 @@
-package com.jorgehernandezramirez.spring.springboot.oauth.configuration;
+package com.jorgehernandezramirez.spring.springboot.oauth.server.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -41,12 +41,31 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
+                //my-trusted-client
                 .withClient("my-trusted-client")
                 .secret("secret")
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit", "client_credentials")
                 .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
                 .scopes("read")
                 .redirectUris("http://example.com")
+                .accessTokenValiditySeconds(300)
+                .refreshTokenValiditySeconds(6000)
+                //oauth-client
+                .and().withClient("oauth-client")
+                .secret("secret")
+                .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit", "client_credentials")
+                .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
+                .scopes("read")
+                .redirectUris("http://localhost:8081/client/")
+                .accessTokenValiditySeconds(300)
+                .refreshTokenValiditySeconds(6000)
+                //login-oauth-client
+                .and().withClient("oauth-login-client")
+                .secret("secret")
+                .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit", "client_credentials")
+                .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
+                .scopes("read")
+                .redirectUris("http://localhost:8081/client/login")
                 .accessTokenValiditySeconds(300)
                 .refreshTokenValiditySeconds(6000);
     }

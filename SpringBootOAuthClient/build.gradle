@@ -1,4 +1,4 @@
-group 'com.jorgehernandezramirez.spring.springboot.oauth.server'
+group 'com.jorgehernandezramirez.spring.springboot.oauth.client'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -25,7 +25,7 @@ dependencyManagement {
 sourceCompatibility = 1.8
 
 springBoot {
-    mainClass = "com.jorgehernandezramirez.spring.springboot.oauth.server.Application"
+    mainClass = "com.jorgehernandezramirez.spring.springboot.oauth.client.Application"
 }
 
 repositories {

@@ -1,4 +1,4 @@
-package com.jorgehernandezramirez.spring.springboot.oauth.configuration;
+package com.jorgehernandezramirez.spring.springboot.oauth.server.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

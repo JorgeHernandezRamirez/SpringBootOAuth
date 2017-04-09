@@ -1,4 +1,4 @@
-package com.jorgehernandezramirez.spring.springboot.oauth;
+package com.jorgehernandezramirez.spring.springboot.oauth.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

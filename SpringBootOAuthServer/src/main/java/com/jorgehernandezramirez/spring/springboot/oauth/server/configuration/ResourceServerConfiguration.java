@@ -1,4 +1,4 @@
-package com.jorgehernandezramirez.spring.springboot.oauth.configuration;
+package com.jorgehernandezramirez.spring.springboot.oauth.server.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -25,9 +25,9 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         http.
                 anonymous().disable().
                 headers().frameOptions().disable()
-                .and().requestMatchers().antMatchers("/private", "/admin", "/admin/oauth")
+                .and().requestMatchers().antMatchers("/private", "/admin", "/admin/oauth", "/user")
                 .and().authorizeRequests()
-                .antMatchers("/private").authenticated()
+                .antMatchers("/private", "/user").authenticated()
                 .antMatchers("/admin").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/admin/oauth").access("#oauth2.hasScope('read')")
                 .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());

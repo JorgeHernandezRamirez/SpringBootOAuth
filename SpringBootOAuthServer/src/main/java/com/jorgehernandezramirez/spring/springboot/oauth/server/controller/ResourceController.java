@@ -1,4 +1,4 @@
-package com.jorgehernandezramirez.spring.springboot.oauth.controller;
+package com.jorgehernandezramirez.spring.springboot.oauth.server.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
