@@ -65,18 +65,6 @@ public class OAuthClientConfiguration {
         return oAuth2ClientAuthenticationProcessingFilter;
     }
 
-    private OAuth2ProtectedResourceDetails buildResourceDetails(final String clientId, final String secret,
-                                                                       final String accessTokenUri, final String userAuthorizationUri,
-                                                                       final List<String> scopes) {
-        final AuthorizationCodeResourceDetails resource = new AuthorizationCodeResourceDetails();
-        resource.setClientId(clientId);
-        resource.setClientSecret(secret);
-        resource.setAccessTokenUri(accessTokenUri);
-        resource.setUserAuthorizationUri(userAuthorizationUri);
-        resource.setScope(scopes);
-        return resource;
-    }
-
     private OAuth2ProtectedResourceDetails buildResourceForOAuthClient(){
         return buildResourceDetails(OAUTH_CLIENT, SECRET, OAUTH_TOKEN_URI, OAUTH_AUTHORIZATION_URI,
                 SCOPES);
@@ -85,5 +73,17 @@ public class OAuthClientConfiguration {
     private OAuth2ProtectedResourceDetails buildResourceForOAuthLoginClient(){
         return buildResourceDetails(OAUTH_LOGIN_CLIENT, SECRET, OAUTH_TOKEN_URI, OAUTH_AUTHORIZATION_URI,
                 SCOPES);
+    }
+
+    private OAuth2ProtectedResourceDetails buildResourceDetails(final String clientId, final String secret,
+                                                                final String accessTokenUri, final String userAuthorizationUri,
+                                                                final List<String> scopes) {
+        final AuthorizationCodeResourceDetails resource = new AuthorizationCodeResourceDetails();
+        resource.setClientId(clientId);
+        resource.setClientSecret(secret);
+        resource.setAccessTokenUri(accessTokenUri);
+        resource.setUserAuthorizationUri(userAuthorizationUri);
+        resource.setScope(scopes);
+        return resource;
     }
 }

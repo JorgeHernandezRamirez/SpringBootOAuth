@@ -45,7 +45,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .withClient("my-trusted-client")
                 .secret("secret")
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit", "client_credentials")
-                .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
                 .scopes("read")
                 .redirectUris("http://example.com")
                 .accessTokenValiditySeconds(300)
